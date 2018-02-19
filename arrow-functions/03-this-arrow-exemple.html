@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>03 - This no Arrow Function</title>
+</head>
+<body>
+    <button id="btn">Make my sandwich!</button>
+</body>
+
+<script>
+
+    const sandwich = {
+        bread: 'white',
+        cheese: 'cheddar',
+
+        prepare: function() {
+            return 'I want a sandwich with ' + this.bread + ' bread and ' + this.cheese + ' cheese!';
+        },
+
+        make: function() {
+            var that = this;
+            window.setTimeout(function() {
+                console.log(that.prepare());
+            }, 500);
+        }
+    };
+
+    const btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function() {
+        sandwich.make()
+    });
+
+
+    /*Usando Arrow Function*/
+
+    const sandwichArrow =  {
+        bread: 'integral',
+        cheese: 'cheddar',
+
+        prepare: function() {
+            return 'I want a sandwich with ' + this.bread + ' bread and ' + this.cheese + ' cheese!';
+        },
+
+        make: function() {
+            window.setTimeout( () => {
+                console.log( this.prepare() );
+            }, 500);
+        }
+    }
+
+    const btnArrow = document.getElementById('btn');
+
+    btnArrow.addEventListener('click', () => sandwichArrow.make());
+
+</script>
+</html>
